@@ -2,8 +2,28 @@ zenith-client
 =============
 
 <br/>
-This client class extends the default *SoapClient* class and allows you to perform a request to a Zenith application. The next code shows how to use this class to invoke the *Acme\HelloWorld* service.
+This client class extends *SoapClient* and allows you to perform a request to a Zenith application. 
 
+Installation
+------------
+
+<br/>
+**Composer**
+```javascript
+{
+    "require": {
+    	"zenith/client": "1.0.*"
+    }
+}
+```
+
+<br/>
+Examples
+--------
+<br/>
+The next code shows how to use this class to invoke the *Acme\HelloWorld* service.
+
+<br/>
 **Simple request**
 ```php
 require __DIR__ . '/vendor/autoload.php';

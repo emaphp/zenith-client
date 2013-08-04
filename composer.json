@@ -13,7 +13,7 @@
 	,
     "require": {
     	"ext-soap": "*",
-        "zenith/soap": "1.0.0"
+        "zenith/soap": "1.0.*"
     },
     "autoload": {
 		"psr-0": {"Zenith\\Client": "src/"}
