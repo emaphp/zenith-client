@@ -46,7 +46,7 @@ else {
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-use Zenith\Client;
+use Zenith\Client\Client;
 use Zenith\SOAP\Request;
 use Zenith\SOAP\Response;
 
@@ -82,7 +82,7 @@ else {
 ```php
 require __DIR__ . '/vendor/autoload.php';
 
-use Zenith\Client;
+use Zenith\Client\Client;
 use Zenith\SOAP\Request;
 use Zenith\SOAP\Response;
 
