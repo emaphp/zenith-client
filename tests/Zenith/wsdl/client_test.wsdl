@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<definitions xmlns:typens="urn:ZenithService" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="ZenithService" xmlns:tns="urn:ZenithService" targetNamespace="urn:ZenithService">
+	<types>
+		<xsd:schema targetNamespace="urn:ZenithService">
+			<xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+			<xsd:import namespace="http://schemas.xmlsoap.org/wsdl/"/>
+			<xsd:complexType name="Service">
+				<xsd:sequence>
+					<xsd:element name="class" type="xsd:string"/>
+					<xsd:element name="method" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Option">
+				<xsd:sequence>
+					<xsd:element name="name" type="xsd:string"/>
+					<xsd:element name="value" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Configuration">
+				<xsd:sequence>
+					<xsd:element name="option" type="tns:Option" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Parameter">
+				<xsd:sequence>
+					<xsd:any />
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Status">
+				<xsd:sequence>
+					<xsd:element name="code" type="xsd:int"/>
+					<xsd:element name="message" type="xsd:string"/>
+				</xsd:sequence>
+			</xsd:complexType>
+			<xsd:complexType name="Result">
+				<xsd:sequence>
+					<xsd:any />
+				</xsd:sequence>
+			</xsd:complexType>
+		</xsd:schema>
+	</types>
+	<message name="execute">
+		<part name="service" type="tns:Service"/>
+		<part name="configuration" type="tns:Configuration"/>
+		<part name="parameter" type="tns:Parameter"/>
+	</message>
+	<message name="response">
+		<part name="service" type="tns:Service"/>
+		<part name="status" type="tns:Status"/>
+		<part name="result" type="tns:Result"/>
+	</message>
+	<portType name="ZenithServicePortType">
+		<operation name="execute">
+			<documentation>Zenith generic operation</documentation>
+			<input message="typens:execute"/>
+			<output message="typens:response"/>
+		</operation>
+	</portType>
+	<binding name="ZenithServiceBinding" type="typens:ZenithServicePortType">
+		<soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="execute">
+			<soap:operation soapAction="urn:executeAction"/>
+			<input>
+				<soap:body namespace="urn:ZenithService" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</input>
+			<output>
+				<soap:body namespace="urn:ZenithService" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+			</output>
+		</operation>
+	</binding>
+	<service name="ZenithServiceService">
+		<port name="ZenithServicePort" binding="typens:ZenithServiceBinding">
+			<soap:address location="http://my-domain.com/service.php"/>
+		</port>
+	</service>
+</definitions>

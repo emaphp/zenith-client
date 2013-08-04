@@ -1,0 +1,21 @@
+{
+	"name": "zenith/client",
+	"type": "library",
+	"description": "Zenith Framework Client",
+	"keywords": ["soap", "zenith", "client"],
+	"license": "BSD 2-Clause",
+	"authors": [
+		{
+			"name": "Emmanuel Antico",
+			"email": "emmanuel.antico@gmail.com"
+		}
+	]
+	,
+    "require": {
+    	"ext-soap": "*",
+        "zenith/soap": "dev-master"
+    },
+    "autoload": {
+		"psr-0": {"Zenith\\Client": "src/"}
+	}
+}
